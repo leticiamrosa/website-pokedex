@@ -6,6 +6,7 @@
         "dom.iterable",
         "esnext"
       ],
+      "allowSyntheticDefaultImports": true,
       "esModuleInterop": true,
       "module": "esnext",
       "moduleResolution": "node",
@@ -25,6 +26,6 @@
       "resolveJsonModule": true
     },
     "include": [
-      "src"
+      "./src/"
     ],
   }
