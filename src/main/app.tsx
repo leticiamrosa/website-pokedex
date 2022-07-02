@@ -1,11 +1,13 @@
 import React from 'react'
 import { Router } from './routes/router'
-import { PokemonsContext } from '@presentation/contexts/pokemons/pokemons-context'
+import { PokedexContext } from '@presentation/providers/pokedex/pokedex-context'
+import GlobalStyles from '@presentation/styles/global'
 
 export const App: React.FC = () => {
   return (
-    <PokemonsContext.Provider>
+    <PokedexContext.Provider>
        <Router />
-    </PokemonsContext.Provider>
+       <GlobalStyles />
+    </PokedexContext.Provider>
   )
 }

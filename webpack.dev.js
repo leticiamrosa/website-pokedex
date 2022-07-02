@@ -1,7 +1,7 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { merge } = require('webpack-merge')
+
 const common = require('./webpack.common')
-const { DefinePlugin } = require('webpack')
+const { merge } = require('webpack-merge')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = merge(common, {
   mode: 'development',
@@ -22,6 +22,16 @@ module.exports = merge(common, {
       }, {
         loader: 'sass-loader'
       }]
+    },
+    {
+      test: /\.svg/,
+      use: {
+        loader: 'svg-url-loader',
+        options: {
+          iesafe: true,
+          encoding: 'base64'
+        }
+      }
     }]
   },
   devtool: 'inline-source-map',
@@ -29,14 +39,12 @@ module.exports = merge(common, {
     contentBase: './public',
     writeToDisk: true,
     historyApiFallback: true,
-    port: 8080
+    port: 3000,
+    open: true
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './template.dev.html'
-    }),
-    new DefinePlugin({
-      'process.env.API_URL': 'http://fordevs.herokuapp.com/api'
     })
   ]
 })

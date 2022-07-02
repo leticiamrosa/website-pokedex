@@ -4,10 +4,11 @@
   "main": "index.js",
   "repository": "git@github.com:leticiamrosa/website-pokedex.git",
   "author": "leticiamrosa <leticiamonteiro.design@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "scripts": {
+    "build": "webpack --config webpack.prod.js",
     "dev:base": "webpack serve --config webpack.dev.js",
-    "dev": "yarn dev:base --open",
+    "dev": "yarn dev:base",
     "test": "jest --passWithNoTests --no-cache --runInBand",
     "test:watch": "yarn test --watch",
     "test:staged": "yarn test --findRelatedTests",
@@ -16,7 +17,9 @@
     "test:coveralls": "yarn test:ci && coveralls < coverage/lcov.info"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "11.2.5",
+    "@testing-library/react-hooks": "^8.0.1",
     "@types/axios": "0.14.0",
     "@types/faker": "5.1.2",
     "@types/jest": "26.0.20",
@@ -24,6 +27,7 @@
     "@types/react": "^17.0.44",
     "@types/react-dom": "17.0.2",
     "@types/react-router-dom": "5.1.5",
+    "@types/styled-components": "^5.1.25",
     "@typescript-eslint/eslint-plugin": "4.17.0",
     "@typescript-eslint/parser": "4.17.0",
     "clean-webpack-plugin": "3.0.0",
@@ -50,19 +54,24 @@
     "node-sass": "5.0.0",
     "sass-loader": "11.0.1",
     "style-loader": "2.0.0",
+    "svg-url-loader": "^7.1.1",
     "ts-jest": "26.5.3",
     "ts-loader": "8.0.18",
     "typescript": "4.2.3",
+    "typescript-styled-plugin": "^0.18.2",
     "webpack": "5.25.0",
-    "webpack-cli": "4.5.0",
+    "webpack-cli": "^4.10.0",
     "webpack-dev-server": "3.11.0",
     "webpack-merge": "5.7.3"
   },
   "dependencies": {
     "axios": "0.21.1",
+    "dotenv-webpack": "^7.1.1",
+    "history": "^5.3.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-router-dom": "5.2.0",
+    "styled-components": "^5.3.5",
     "unstated-next": "^1.1.0"
   },
   "resolutions": {

@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Pokedex } from './pokedex.web'
-import { PokemonsContext } from '@presentation/contexts/pokemons/pokemons-context'
+import { PokedexContext } from '@presentation/providers/pokedex/pokedex-context'
 
 export const PokedexContainer: React.FC = () => {
-  const { count } = PokemonsContext.useContainer()
-  return <Pokedex count={count}/>
+  const { getPokemons } = PokedexContext.useContainer()
+
+  useEffect(() => {
+    handleGetPokemons()
+  }, [])
+
+  const handleGetPokemons = async (): Promise<void> => {
+    await getPokemons()
+  }
+
+  return <Pokedex />
 }

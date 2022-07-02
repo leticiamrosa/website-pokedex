@@ -1,13 +1,9 @@
 import React from 'react'
 
-interface Props {
-  count: number
-}
-
-export const Pokedex: React.FC<Props> = ({ count }: Props) => {
+export const Pokedex: React.FC = () => {
   return (
-        <div>
-            <h1>Pokedex `${ count }`</h1>
-        </div>
+    <div>
+      <h1>Pokedex</h1>
+    </div>
   )
 }

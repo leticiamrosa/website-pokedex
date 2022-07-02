@@ -1,22 +1,20 @@
-import { HttpGetClient, HttpStatusCode } from '@data/protocols/http'
+import { HttpClient, HttpStatusCode } from '@data/protocols/http'
 import { UnexpectedError } from '@domain/errors'
 import { Pokedex } from '@domain/usecases/Pokedex/pokedex'
-import { IPokedex } from '@domain/models/pokemons/pokemons-model'
 
 export class RemotePokedex implements Pokedex {
   constructor (
     private readonly url: string,
-    private readonly httpGetClient: HttpGetClient<IPokedex>
+    private readonly httpClient: HttpClient<Pokedex.Model>
   ) {}
 
-  async getPokemons (): Promise<IPokedex> {
-    const httpResponse = await this.httpGetClient.get({
-      url: this.url
+  async getPokemons (): Promise<Pokedex.Model> {
+    const httpResponse = await this.httpClient.request({
+      url: this.url,
+      method: 'get'
     })
 
-    const isError = !httpResponse || httpResponse.statusCode !== HttpStatusCode.ok
-
-    if (isError) {
+    if (!httpResponse || httpResponse.statusCode !== HttpStatusCode.OK) {
       throw new UnexpectedError()
     }
 
