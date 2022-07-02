@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "rootDir": "./src",
+    "baseUrl": ".",
+    "paths": {
+      "@domain/*": ["./src/domain/*"],
+      "@data/*": ["./src/data/*"],
+      "@infra/*": ["./src/infra/*"],
+      "@presentation/*": ["./src/presentation/*"],
+      "@components/*": ["./src/presentation/components/*"],
+      "@styles/*": ["./src/presentation/styles/*"],
+      "@main/*": ["./src/main/*"],
+      "@tests/*": ["./src/_tests/*"]
+    },
+    "allowJs": true,
+    "resolveJsonModule": true
+  },
+  "plugins": [
+    {
+      "name": "typescript-styled-plugin"
+    }
+  ],
+  "include": [
+    "src",
+    "src/main/types/custom.d.ts"
+  ],
+}
